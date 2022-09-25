@@ -9,9 +9,50 @@
 </head>
 <body>
 <div class="container">
-    <div class="navbar"></div>
-    <div class="section" id="section-left"></div>
-    <div class="section" id="section-center"></div>
+    <div class="navbar">
+        <div class="logo">TO DO</div>
+    </div>
+    <div class="section" id="section-left">
+        <ul class="category-type-list">
+            <li><input type="text" class="new-category" placeholder="Create new category" name="cat"><button name="cat" type="button">Add</button></li\>
+            <li>Category type:</li>
+            <li><input type="radio" name="project-type"> Normal</li>
+            <li><input type="radio" name="project-type"> Project</li>
+            <li><input type="radio" name="project-type"> Custom</li>
+        </ul>
+        <div class="category-list">
+            <ul>
+                <li class="list-item"><a href="">All</a></li>
+                <li class="list-item">Upcoming</li>
+                <li class="list-item">Project 1</li>
+                <li class="list-item">Project 2</li>
+                <li class="list-item">Home activities</li>
+            </ul>
+        </div>
+    </div>
+    <div class="section" id="section-center">
+        <div class="input-form">
+            <input type="text" placeholder="Enter task title" class="task-input" id="task-input" name="task-input"><button>Add task</button>
+        </div>
+        <div class="task-container">
+            <ul class="task-list">
+                <li class="task-element">
+                    Title: Eat
+                    Description: Eat some bread.
+                    Deadline: 34.05.20224.
+                    Priority: Important.
+
+                     <button type="button" name="done" >Done</button>
+                     <button>Change priority</button>
+                     <button>Change deadline</button>
+                     <button name="rm-task" type="button">Remove task</button>
+                     
+                    </li>
+                <li class="task-element">Sleep</li>
+                <li class="task-element">Repear</li>
+            </ul>
+        </div>
+    </div>
     <div class="section" id="section-right"></div>
     <div class="footer"></div>
 </div>
