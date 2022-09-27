@@ -1,8 +1,9 @@
 export default function render(){
     
     let logoText = 'TO DO';
-
-    const container = document.querySelector('.container');
+    const body = document.querySelector('body');
+    const container = document.createElement('div');
+        container.classList.add('container');
     const navbar = document.createElement('div');
         navbar.classList.add('navbar');
         const logo = document.createElement('div');
@@ -26,4 +27,5 @@ export default function render(){
     container.appendChild(sectionCenter);
     container.appendChild(sectionRight);
     container.appendChild(footer);
+    body.appendChild(container);
 }

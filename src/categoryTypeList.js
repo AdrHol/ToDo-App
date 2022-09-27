@@ -1,8 +1,9 @@
 export default function render(){
 
-    const container = document.querySelector('.section-left');
+    const container = document.querySelector('#section-left');
 
         const list = document.createElement('ul');
+            list.classList.add('category-type-list');
             const inputAndButton = document.createElement('li');
                 const input = document.createElement('input');
                     input.classList.add('new-category');
@@ -43,8 +44,10 @@ export default function render(){
                 radio.setAttribute('name', 'project-type');
                 radio.setAttribute('value', `${item.value}`);
             li.appendChild(radio);
-            li.textContent = item.text;
+            const text = document.createTextNode(`${item.text}`);
+            li.appendChild(text);
         list.appendChild(li);
     })
 
+    container.appendChild(list);
 }
