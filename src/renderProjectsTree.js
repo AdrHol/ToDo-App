@@ -17,7 +17,7 @@ export default function renderProjectTree(){
             const li = document.createElement('li');
                 li.classList.add('list-item');
             const button = document.createElement('button');
-             button.textContent = element.type;
+             button.textContent = element.name;
             li.appendChild(button);
             ul.appendChild(li);
         })

@@ -9,7 +9,13 @@ module.exports = {
       mainDataStorage: './src/mainDataStorage.js',
       renderProjectTree: './src/renderProjectsTree.js',
       renderTaskInput: './src/renderTaskInput.js',
-      renderTaskList: './src/renderTaskList.js'
+      renderTaskList: './src/renderTaskList.js',
+      inputCollector: './src/inputCollector.js',
+      taskManager: './src/taskManager.js',
+      renderFromArray: './src/renderFromArray.js',
+      projectFactory: './src/projectFactory.js',
+      workFlowController: './src/workFlowController.js',
+      taskFactory: './src/taskFactory.js'
   },
   devtool: 'inline-source-map',
   plugins: [

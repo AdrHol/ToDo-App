@@ -2,10 +2,12 @@ const dataObject = {
 
 database: [
     {
-        type: 'All',
+        name: 'All',
+        id: 0,
     },
     {
-        type: 'Upcoming',
+        name: 'Upcoming',
+        id: 1,
     },
 ],
 
@@ -15,8 +17,15 @@ get print() {
 },
 
 set insert(value) {
+    let idValue = this.database.length;
+    value.id = idValue;
 this.database.push(value)
 },
+
+findById: function(id){
+    let result = this.database.find(project => project.id == id);
+        return result;
+}
 
 }
 
