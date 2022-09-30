@@ -16,7 +16,7 @@ const taskController = {
         // console.log(project)
             project.removeTaskById(id);
         const field = document.getElementById(id);
-            field.innerHTML = '';
+            field.parentNode.removeChild(field);
     }
 }
 

@@ -7,7 +7,13 @@ const workflow = {
 
     set change(value) {
         this.value = value;
-        this.changeWorkflowContent(value);
+            if(value == 0){
+                const allTasks = dataObject.getAllTasks();
+                    render.taskList(allTasks);
+            } else {
+                this.changeWorkflowContent(value);
+            }
+       
     },
     
     changeWorkflowContent: function(value){

@@ -25,6 +25,18 @@ this.database.push(value)
 findById: function(id){
     let result = this.database.find(project => project.id == id);
         return result;
+},
+
+getAllTasks: function(){
+    let allTasks = []; 
+    this.database.forEach(project => {
+        if("tasks" in project){
+            let test = project.getTasks();
+                test.forEach(element => allTasks.push(element));
+        }
+    })
+    console.log(allTasks);
+    return allTasks;
 }
 
 }
