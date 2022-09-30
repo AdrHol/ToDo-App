@@ -13,7 +13,29 @@ export default function renderTaskInput() {
         const button = document.createElement('button');
             button.classList.add('add-task-button');
             button.textContent = 'Add task';
+        const dateInput = document.createElement('input');
+            dateInput.classList.add('expDate');
+            dateInput.setAttribute('name', 'date-input');
+            dateInput.setAttribute('id', 'date-input');
+            dateInput.setAttribute('type', 'date');
+        const priorityInput = document.createElement('select');
+            priorityInput.classList.add('priority-input');
+            priorityInput.setAttribute('id', 'priority-input');
+                for(let i = 1; i < 11; i++){
+                    const option = document.createElement('option');
+                        option.setAttribute('value', `${i}`);
+                        option.textContent = i;
+                    priorityInput.appendChild(option);   
+                }
+        const textArea = document.createElement('textarea');
+                textArea.classList.add('description');
+                textArea.setAttribute('id', 'description');
+                textArea.setAttribute('rows', '4');
+                textArea.setAttribute('maxlength', '50');
         div.appendChild(input);
+        div.appendChild(dateInput);
+        div.appendChild(priorityInput);
         div.appendChild(button);
+        div.appendChild(textArea);
         container.appendChild(div);
 }

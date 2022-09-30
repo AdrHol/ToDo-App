@@ -14,8 +14,8 @@ const taskManager = {
         render.projectTree(projectList);
     },
 
-    newTask: function(value){
-            const task = new taskFactory(value);
+    newTask: function(value, description, expDate, priority){
+            const task = new taskFactory(value, description, expDate, priority);
                 let projectId = workflowController.getCurrentWorkflow;
                 let project = dataObject.findById(projectId);
                     console.log(project);

@@ -15,7 +15,8 @@ module.exports = {
       renderFromArray: './src/renderFromArray.js',
       projectFactory: './src/projectFactory.js',
       workFlowController: './src/workFlowController.js',
-      taskFactory: './src/taskFactory.js'
+      taskFactory: './src/taskFactory.js',
+      taskControler: './src/taskControler.js'
   },
   devtool: 'inline-source-map',
   plugins: [

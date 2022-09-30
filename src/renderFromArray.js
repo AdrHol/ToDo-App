@@ -1,4 +1,5 @@
 import workflow from "./workFlowController";
+import taskControler from './taskControler';
 
 const render = {
 
@@ -27,12 +28,37 @@ const render = {
 
     taskList: function(array){
 
+        const workflowInfo = document.querySelector('.current-workflow');
+            workflowInfo.textContent = `Workflow: ${workflow.getCurrentWorkflow}`;
         const taskList = document.querySelector('.task-list');
         taskList.innerHTML = '';
         array.forEach(task => {
             const li = document.createElement('li');
-                li.classList.add('.task=list-element');
-                li.textContent = `Title: ${task.title}`;
+                li.classList.add('.task-list-element');
+                li.setAttribute('id', `${task.id}${workflow.getCurrentWorkflow}`);
+                li.textContent = `Title: ${task.title} || Description: ${task.description} ||
+                Expiration date: ${task.expDate}`;
+                const statusButton = document.createElement('button');
+                    statusButton.classList.add('status-button');
+                    statusButton.setAttribute('value', `${task.id}${workflow.getCurrentWorkflow}`)
+                    statusButton.textContent = 'Done';
+                    statusButton.addEventListener('click', function(e){
+                        taskControler.changeStat(e.target.value);
+                    });
+                const removeButton = document.createElement('button');
+                    removeButton.classList.add('remove-button');
+                    removeButton.setAttribute('value', `${task.id}${workflow.getCurrentWorkflow}`);
+                    removeButton.addEventListener('click', function(e){
+                        taskControler.delete(e.target.value);
+                    })
+                    removeButton.textContent = 'Delete';
+                const dateButton = document.createElement('button');
+                    dateButton.classList.add('date-button');
+                    dateButton.setAttribute('value', `${task.id}${workflow.getCurrentWorkflow}`);
+                    dateButton.textContent = 'Change date';
+                li.appendChild(statusButton);
+                li.appendChild(removeButton);
+                li.appendChild(dateButton)
             taskList.appendChild(li);
         })
     }

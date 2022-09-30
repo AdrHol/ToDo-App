@@ -18,8 +18,14 @@ export default function ProjectFactory(value){
         };
     }
     this.addTask = (task) => {
+        let taskId = this.tasks.length;
+            task.id = taskId;
         this.tasks.push(task);
-    };
+
+    },
+    this.removeTaskById = (id) => {
+        this.tasks.splice(id[0], 1);
+    }
 
 
 }
