@@ -5,9 +5,13 @@ export default function ProjectFactory(value){
     this.status = 'active';
     this.expDate = null;
     this.value = null;
+    this.id = null;
 
     this.getTasks = () => {
         let tasklist = this.tasks;
+            tasklist = tasklist.sort(function(a,b){
+                return (Number(a.priority) - (Number(b.priority)))
+            })
         return tasklist;
     };
     this.statusChange = () => {
@@ -18,13 +22,18 @@ export default function ProjectFactory(value){
         };
     }
     this.addTask = (task) => {
-        let taskId = this.tasks.length;
-            task.id = taskId;
         this.tasks.push(task);
-
+        this.updateTaskId();
     },
     this.removeTaskById = (id) => {
         this.tasks.splice(id[0], 1);
+    },
+    this.updateTaskId = () => {
+        this.tasks.forEach((task, index) => {
+            let id = `${index}` + `${this.id}`;
+            task.updateId(id);
+            
+        });
     }
 
 

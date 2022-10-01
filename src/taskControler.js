@@ -1,4 +1,5 @@
 import dataObject from "./mainDataStorage";
+import render from './renderFromArray';
 
 const taskController = {
     
@@ -13,10 +14,11 @@ const taskController = {
     },
     delete: function(id){
         let project = dataObject.findById(id[1]);
-        // console.log(project)
             project.removeTaskById(id);
+            project.updateTaskId();
         const field = document.getElementById(id);
             field.parentNode.removeChild(field);
+            render.taskList(project.getTasks());
     }
 }
 

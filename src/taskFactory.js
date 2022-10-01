@@ -12,5 +12,8 @@ export default function TaskFactory(title, description, expDate, priority){
         } else if (this.status == 'done'){
             this.status = 'active';
         }
+    },
+    this.updateId = (id) => {
+        this.id = id;
     }
 }

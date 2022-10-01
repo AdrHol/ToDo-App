@@ -21,6 +21,9 @@ const inputCollector = {
          let inputValue = input.value;
         
             if(inputValue != ''){
+                if (priority.value == ''){
+                    priority.value = 1;
+                }
                 taskManager.newTask(inputValue, description.value, expDate.value, priority.value);
                 input.value = '';
                 description.value = '';

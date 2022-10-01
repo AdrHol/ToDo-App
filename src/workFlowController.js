@@ -9,7 +9,10 @@ const workflow = {
         this.value = value;
             if(value == 0){
                 const allTasks = dataObject.getAllTasks();
-                    render.taskList(allTasks);
+                let allTasksSorted = allTasks.sort(function (a,b){
+                    return (Number(a.priority) - Number(b.priority))
+                });
+                    render.taskList(allTasksSorted);
             } else {
                 this.changeWorkflowContent(value);
             }
@@ -20,7 +23,10 @@ const workflow = {
        const project = dataObject.findById(value);
        console.log(project);
                 let projectTaskList = project.getTasks();
-                render.taskList(projectTaskList);
+                let filteredProjectTaskList = projectTaskList.sort(function (a,b){
+                    return (Number(a.priority) - Number(b.priority))
+                });
+                render.taskList(filteredProjectTaskList);
     },
     
     get getCurrentWorkflow() {
