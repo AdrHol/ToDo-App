@@ -2,11 +2,11 @@ const dataObject = {
 
 database: [
     {
-        name: 'All',
+        name: 'All (sort by priority)',
         id: 0,
     },
     {
-        name: 'Upcoming',
+        name: 'Upcoming (sort by date)',
         id: 1,
     },
 ],

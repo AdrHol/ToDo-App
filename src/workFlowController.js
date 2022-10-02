@@ -1,5 +1,6 @@
 import dataObject from './mainDataStorage';
 import render from "./renderFromArray";
+import expirationController from './expirationControll';
 
 const workflow = {
 
@@ -13,6 +14,10 @@ const workflow = {
                     return (Number(a.priority) - Number(b.priority))
                 });
                     render.taskList(allTasksSorted);
+            } else if (value == 1){
+                const allTasks = dataObject.getAllTasks();
+                    let sortedByDate = expirationController.getExpiring(allTasks);
+                    render.taskList(sortedByDate);
             } else {
                 this.changeWorkflowContent(value);
             }
@@ -32,8 +37,13 @@ const workflow = {
     
     get getCurrentWorkflow() {
         return this.value;
-    }
+    },
 
+    get workflowName () {
+        let project = dataObject.findById(this.value);
+            let output = project.name;
+        return output;
+    }
 
 }
 

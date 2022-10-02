@@ -31,15 +31,24 @@ const render = {
     taskList: function(array){
 
         const workflowInfo = document.querySelector('.current-workflow');
-            workflowInfo.textContent = `Workflow: ${workflow.getCurrentWorkflow}`;
+            workflowInfo.textContent = `Workflow: ${workflow.workflowName}`;
         const taskList = document.querySelector('.task-list');
         taskList.innerHTML = '';
         array.forEach(task => {
             const li = document.createElement('li');
-                li.classList.add('.task-list-element');
+                li.classList.add('task-list-element');
                 li.setAttribute('id', `${task.id}`);
-                li.textContent = `Title: ${task.title} || Description: ${task.description} ||
-                Expiration date: ${task.expDate} || ${task.expirationMessage}`;
+                        const firstRow = document.createElement('div');
+                        firstRow.classList.add('task-row');
+                        const title = document.createElement('span');
+                            title.classList.add('task-title');
+                            title.textContent = task.title;
+                        const date = document.createElement('span');
+                            date.classList.add('task-date');
+                            date.textContent = `Expiration date: ${task.expDate}`;
+                        const dateMessege = document.createElement('span');
+                            dateMessege.classList.add('task-date-message');
+                            dateMessege.textContent = task.expirationMessage;
                 const statusButton = document.createElement('button');
                     statusButton.classList.add('status-button');
                     statusButton.setAttribute('value', `${task.id}`)
@@ -58,9 +67,17 @@ const render = {
                     dateButton.classList.add('date-button');
                     dateButton.setAttribute('value', `${task.id}`);
                     dateButton.textContent = 'Change date';
-                li.appendChild(statusButton);
-                li.appendChild(removeButton);
-                li.appendChild(dateButton)
+                    firstRow.appendChild(title);
+                    firstRow.appendChild(date);
+                    firstRow.appendChild(dateMessege);
+                    firstRow.appendChild(statusButton);
+                    firstRow.appendChild(removeButton);
+                    firstRow.appendChild(dateButton);
+                const secondRow = document.createElement('div');
+                    secondRow.classList.add('task-row-sec');
+                        secondRow.textContent = task.description;
+                    li.appendChild(firstRow);
+                    li.appendChild(secondRow);
             taskList.appendChild(li);
         })
     },

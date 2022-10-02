@@ -20,6 +20,15 @@ checkExpiration: function (element){
 
     return result;
 
+},
+
+getExpiring: function(takslist){
+    let output;
+
+    output = takslist.sort((a,b) => {
+        return compareAsc(parseISO(a.expDate), parseISO(b.expDate));
+    });
+    return output;
 }
 
 }
