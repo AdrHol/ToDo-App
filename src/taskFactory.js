@@ -5,6 +5,7 @@ export default function TaskFactory(title, description, expDate, priority){
     this.priority = priority, 
     this.status = 'active',
     this.id = null,
+    this.expirationMessage = null;
 
     this.changeStatus = () => {
         if(this.status == 'active'){
@@ -15,5 +16,9 @@ export default function TaskFactory(title, description, expDate, priority){
     },
     this.updateId = (id) => {
         this.id = id;
+    }
+
+    this. setExpMessage = (message) => {
+        this.expirationMessage = message;
     }
 }

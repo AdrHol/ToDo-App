@@ -17,7 +17,7 @@ export default function renderTaskInput() {
             dateInput.classList.add('expDate');
             dateInput.setAttribute('name', 'date-input');
             dateInput.setAttribute('id', 'date-input');
-            dateInput.setAttribute('type', 'date');
+            dateInput.setAttribute('type', 'datetime-local');
         const priorityInput = document.createElement('select');
             priorityInput.classList.add('priority-input');
             priorityInput.setAttribute('id', 'priority-input');

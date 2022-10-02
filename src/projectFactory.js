@@ -1,19 +1,30 @@
+import expirationController from "./expirationControll";
+
 export default function ProjectFactory(value){
     this.name = value;
     this.type = 'project';
     this.tasks = [];
     this.status = 'active';
     this.expDate = null;
-    this.value = null;
+    this.description = null;
     this.id = null;
 
     this.getTasks = () => {
         let tasklist = this.tasks;
+            tasklist.forEach((task => {
+                let expiration = expirationController.checkExpiration(task);
+                    task.setExpMessage(expiration);
+            }))
             tasklist = tasklist.sort(function(a,b){
                 return (Number(a.priority) - (Number(b.priority)))
             })
         return tasklist;
-    };
+    },
+
+    this.getId = () => {
+        return this.id
+    },
+
     this.statusChange = () => {
         if (this.status === 'active'){
             this.status = 'unactive';
@@ -34,6 +45,7 @@ export default function ProjectFactory(value){
             task.updateId(id);
             
         });
+    
     }
 
 

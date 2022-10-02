@@ -16,7 +16,8 @@ module.exports = {
       projectFactory: './src/projectFactory.js',
       workFlowController: './src/workFlowController.js',
       taskFactory: './src/taskFactory.js',
-      taskControler: './src/taskControler.js'
+      taskControler: './src/taskControler.js',
+      expirationControll: './src/expirationControll.js'
   },
   devtool: 'inline-source-map',
   plugins: [

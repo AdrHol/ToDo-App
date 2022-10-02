@@ -37,6 +37,18 @@ getAllTasks: function(){
     })
     console.log(allTasks);
     return allTasks;
+},
+
+deleteProjectById: function(id){
+    this.database.splice(id, 1);
+    this.updateIds();
+    
+},
+
+updateIds: function(){
+    this.database.forEach((element, index) => {
+        element.id = index;
+    })
 }
 
 }

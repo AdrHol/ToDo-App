@@ -27,6 +27,7 @@ const workflow = {
                     return (Number(a.priority) - Number(b.priority))
                 });
                 render.taskList(filteredProjectTaskList);
+                render.projectCard(project);
     },
     
     get getCurrentWorkflow() {
