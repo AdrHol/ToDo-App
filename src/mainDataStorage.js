@@ -18,7 +18,7 @@ get print() {
 },
 
 set insert(value) {
-    const project = Object.assign(value, this.projectProto);
+    const project = Object.assign(new projectProto(), value);
     let idValue = this.database.length;
     project.id = idValue;
 this.database.push(project);
@@ -61,49 +61,49 @@ parseJSON: function(){
     this.database.forEach(element => console.log(element.prototype));
 },
 
-projectProto: {
-    getTasks: () => {
-        console.log(this);
-        let tasklist = this.tasks;
-            tasklist.forEach((task => {
-                let expiration = expirationController.checkExpiration(task);
-                    task.setExpMessage(expiration);
-            }))
-            tasklist = tasklist.sort(function(a,b){
-                return (Number(a.priority) - (Number(b.priority)))
-            })
-        return tasklist;} 
-    },
-
-    getId: () => {
-        return this.id
-    },
-
-    statusChange: () => {
-        if (this.status === 'active'){
-            this.status = 'unactive';
-        } else if (this.status === 'unactive'){
-            this.status = 'active'
-        };
-    },
-    addTask: (task) => {
-        this.tasks.push(task);
-        this.updateTaskId();
-    },
-    removeTaskById: (id) => {
-        this.tasks.splice(id[0], 1);
-    },
-    updateTaskId: () => {
-        this.tasks.forEach((task, index) => {
-            let id = `${index}` + `${this.id}`;
-            task.updateId(id);
-            
-        });
-    
-    }
 }
 
 
+const projectProto = function Project(){
+    
 
+        this.getTasks = () => {
+            let tasklist = this.tasks;
+                tasklist.forEach((task => {
+                    let expiration = expirationController.checkExpiration(task);
+                        task.setExpMessage(expiration);
+                }))
+                tasklist = tasklist.sort(function(a,b){
+                    return (Number(a.priority) - (Number(b.priority)))
+                })
+            return tasklist;}
+    
+        this.getId = () => {
+            return this.id
+        },
+    
+        this.statusChange =  () => {
+            if (this.status === 'active'){
+                this.status = 'unactive';
+            } else if (this.status === 'unactive'){
+                this.status = 'active'
+            };
+        },
+        this.addTask = (task) => {
+            this.tasks.push(task);
+            this.updateTaskId();
+        },
+        this.removeTaskById = (id) => {
+            this.tasks.splice(id[0], 1);
+        },
+        this.updateTaskId = () => {
+            this.tasks.forEach((task, index) => {
+                let id = `${index}` + `${this.id}`;
+                task.updateId(id);
+                
+            });
+        
+        }
+}
 
 export default dataObject;
