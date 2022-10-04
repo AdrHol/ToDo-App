@@ -5,6 +5,7 @@ import renderProjectTree from './renderProjectsTree';
 import renderTaskInput from './renderTaskInput';
 import renderTaskList from './renderTaskList';
 import inputCollector from './inputCollector';
+import database from './mainDataStorage';
 
 // rendering basic layout: 
 
@@ -21,3 +22,4 @@ categoryButton.addEventListener('click', inputCollector.categoryInput);
     const taskButton = document.querySelector('.add-task-button');
 
 taskButton.addEventListener('click', inputCollector.taskInput);
+

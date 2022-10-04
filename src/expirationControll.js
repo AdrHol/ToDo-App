@@ -11,6 +11,7 @@ checkExpiration: function (element){
     let result;
     if (compareAsc(currentDate, elementDate) == 1){
         result = `Expired ${formatDistanceStrict(elementDate, currentDate)} ago`;
+        element.expired = true;
     } else if (compareAsc(currentDate, elementDate) == 0){
         result = 'today';
     }   else if (compareAsc(currentDate, elementDate) == -1){

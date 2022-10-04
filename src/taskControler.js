@@ -7,8 +7,10 @@ const taskController = {
         const field= document.getElementById(id);
             if(field.classList.contains('done')){
                 field.classList.remove('done');
+                field.style.background = '#c1c1c1';
             } else {
                 field.classList.add('done');
+                field.style.background = '#bbf3b8';
             }
             
     },

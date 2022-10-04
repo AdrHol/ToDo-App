@@ -190,3 +190,43 @@ li.list-item{
     grid-area: footer;
     /* border-top: 1px solid var(--third-test-color); */
 }
+
+.category-button, .add-task-button, 
+.status-button, .remove-button, .date-button, 
+.description-button, .save-button, .delete-button {
+    padding:10px;
+    border-radius: 5px; 
+    border: none;
+    background-color: rgb(77, 126, 237);
+    color: white;
+    font-weight: bold;
+}
+
+.add-task-button,
+.status-button ,
+.remove-button{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.description-button{
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+.save-button{
+    margin-top: 100px;
+    margin-bottom: 5px;
+}
+
+.project-name{
+    text-align: center;
+    font-size: 2rem;
+}
+
+.task-list-element .done {
+    background: #bbf3b8;
+}
+
+.task-list-element .expired {
+    background: #f3b8b8;
+}

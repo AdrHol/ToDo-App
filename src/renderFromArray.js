@@ -14,6 +14,7 @@ const render = {
                     const li = document.createElement('li');
                     li.classList.add('list-item');
                 const button = document.createElement('button');
+                button.classList.add('project-button');
                 button.textContent = project.name;
                 button.setAttribute('value', `${project.id}`);
                     li.appendChild(button);
@@ -60,7 +61,8 @@ const render = {
                     removeButton.classList.add('remove-button');
                     removeButton.setAttribute('value', `${task.id}`);
                     removeButton.addEventListener('click', function(e){
-                        taskControler.delete(e.target.value);
+                        // taskControler.delete(e.target.value);
+                        console.log(dataObject.parseJSON());
                     })
                     removeButton.textContent = 'Delete';
                 const dateButton = document.createElement('button');
@@ -78,6 +80,10 @@ const render = {
                         secondRow.textContent = task.description;
                     li.appendChild(firstRow);
                     li.appendChild(secondRow);
+
+                    if(task.expired){
+                        li.style.background = '#f3b8b8';
+                    }
             taskList.appendChild(li);
         })
     },

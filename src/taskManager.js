@@ -9,6 +9,8 @@ const taskManager = {
 
     newCategory: function(value){
         const project = new projectFactory(value);
+
+        console.log(project);
             dataObject.insert = project;
         const projectList = dataObject.print;
         render.projectTree(projectList);

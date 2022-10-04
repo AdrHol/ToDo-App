@@ -8,48 +8,9 @@ export default function ProjectFactory(value){
     this.expDate = null;
     this.description = null;
     this.id = null;
-
-    this.getTasks = () => {
-        let tasklist = this.tasks;
-            tasklist.forEach((task => {
-                let expiration = expirationController.checkExpiration(task);
-                    task.setExpMessage(expiration);
-            }))
-            tasklist = tasklist.sort(function(a,b){
-                return (Number(a.priority) - (Number(b.priority)))
-            })
-        return tasklist;
-    },
-
-    this.getId = () => {
-        return this.id
-    },
-
-    this.statusChange = () => {
-        if (this.status === 'active'){
-            this.status = 'unactive';
-        } else if (this.status === 'unactive'){
-            this.status = 'active'
-        };
-    }
-    this.addTask = (task) => {
-        this.tasks.push(task);
-        this.updateTaskId();
-    },
-    this.removeTaskById = (id) => {
-        this.tasks.splice(id[0], 1);
-    },
-    this.updateTaskId = () => {
-        this.tasks.forEach((task, index) => {
-            let id = `${index}` + `${this.id}`;
-            task.updateId(id);
-            
-        });
-    
-    }
-
-
 }
+
+
 
 
 
