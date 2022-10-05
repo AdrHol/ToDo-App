@@ -1,13 +1,21 @@
 import expirationController from "./expirationControll";
 
 export default function ProjectFactory(value){
-    this.name = value;
-    this.type = 'project';
-    this.tasks = [];
-    this.status = 'active';
-    this.expDate = null;
-    this.description = null;
-    this.id = null;
+    const obj = {
+    name : {value: value},
+    type : {value: 'project'},
+    tasks: {value: [],
+    writable: true,},
+    status: {value: 'active',
+writable: true},
+    expDate: {value: null,
+    writable: true},
+    description : {value: null},
+    id: {value: null,
+    writable: true},
+}
+
+return obj;
 }
 
 

@@ -18,7 +18,9 @@ get print() {
 },
 
 set insert(value) {
-    const project = Object.assign(new projectProto(), value);
+    // const project = Object.assign(new projectProto(), value);
+    console.log(value);
+    const project = Object.create(projectProto, value);
     let idValue = this.database.length;
     project.id = idValue;
 this.database.push(project);
@@ -53,21 +55,24 @@ updateIds: function(){
     })
 },
 
-getJSON: function(){
-    this.database.forEach(element => console.log(element.prototype));
+saveJSON: function(){
+    const data = JSON.stringify(this.database)
+
+    localStorage.setItem('projects', data);
+
 },
 
-parseJSON: function(){
-    this.database.forEach(element => console.log(element.prototype));
+getJSON: function(){
+    return JSON.parse(localStorage.getItem('projects'));
+
 },
 
 }
 
 
-const projectProto = function Project(){
+const projectProto = {
     
-
-        this.getTasks = () => {
+        getTasks: function(){
             let tasklist = this.tasks;
                 tasklist.forEach((task => {
                     let expiration = expirationController.checkExpiration(task);
@@ -76,27 +81,27 @@ const projectProto = function Project(){
                 tasklist = tasklist.sort(function(a,b){
                     return (Number(a.priority) - (Number(b.priority)))
                 })
-            return tasklist;}
+            return tasklist;},
     
-        this.getId = () => {
+        getId: function(){
             return this.id
         },
     
-        this.statusChange =  () => {
+        statusChange: function(){
             if (this.status === 'active'){
                 this.status = 'unactive';
             } else if (this.status === 'unactive'){
                 this.status = 'active'
             };
         },
-        this.addTask = (task) => {
+        addTask: function(task){
             this.tasks.push(task);
             this.updateTaskId();
         },
-        this.removeTaskById = (id) => {
+        removeTaskById: function(id){
             this.tasks.splice(id[0], 1);
         },
-        this.updateTaskId = () => {
+        updateTaskId: function(){
             this.tasks.forEach((task, index) => {
                 let id = `${index}` + `${this.id}`;
                 task.updateId(id);

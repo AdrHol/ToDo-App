@@ -61,8 +61,8 @@ const render = {
                     removeButton.classList.add('remove-button');
                     removeButton.setAttribute('value', `${task.id}`);
                     removeButton.addEventListener('click', function(e){
-                        // taskControler.delete(e.target.value);
-                        console.log(dataObject.parseJSON());
+                        
+                       console.log(dataObject.getJSON());
                     })
                     removeButton.textContent = 'Delete';
                 const dateButton = document.createElement('button');
@@ -152,6 +152,7 @@ const render = {
                                             project.expDate = setDateInput.value;
                                         }
 
+                                        dataObject.saveJSON();
                                         render.projectCard(project);
                                     })
                         save.appendChild(saveButton);
