@@ -5,6 +5,7 @@ import mainDataStorage from './mainDataStorage';
 export default function renderProjectTree(){
 
     let data = mainDataStorage.print;
+    console.log(data);
     const container = document.querySelector('#section-left');
 
         const categoryList = document.createElement('div');
